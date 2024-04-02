@@ -1,11 +1,10 @@
 import styles from '../styles/card.module.css'
-import Image from 'next/image'
 
 const card = (props) => {
   return (
     <div className={styles.card}>
           <div className={styles.imagem}>
-               <Image src={props.img} alt={props.nome} />
+               <img src={props.img} alt={props.nome} />
           </div>
           <div className={styles.descricao}>
                <h1>{props.nome}</h1>
