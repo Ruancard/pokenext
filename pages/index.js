@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from '../components/card'
 import Head from 'next/head'
-import Image from 'next/image'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -111,7 +110,7 @@ export default function Home() {
         <button onClick={(e) =>  {posselecionado(selecionado.id)}} className={styles.selecionado_button}><h1>&#60;</h1></button>:<h1></h1>} 
         <div className={styles.selecionado_card}>
           <div className={styles.selecionado_imagem}>
-               <Image src={selecionado.sprites.front_default} alt={selecionado.name} />
+               <img src={selecionado.sprites.front_default} alt={selecionado.name} />
           </div>
           <div className={styles.selecionado_descricao}>
                <h1>{selecionado.name}</h1>
