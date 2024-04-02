@@ -88,3 +88,9 @@
 .selecionado_types button{
   margin-inline: 5px;
 }
+@media screen and (max-width: 480px) and (orientation: portrait) {
+  .selecionado_card{
+    width: 60vw;
+    height: 90vw;
+  }
+}

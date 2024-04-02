@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from '../components/card'
-// import Pokemon from '../components/pokemon'
+import Head from 'next/head'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
 
   const [pokemons, setPokemons] = useState([]);
+  const [filtereds, setFiltereds] = useState([]);
   const [tipos, setTipos] = useState([]);
   let [selecionado, setSelecionado] = useState([]);
 
@@ -39,7 +41,7 @@ export default function Home() {
       }
     }
   
-    setPokemons(filteredPokemons);
+    setFiltereds(filteredPokemons);
   };
   
   function arrayCompare(first, last)
@@ -81,7 +83,7 @@ export default function Home() {
           {filteredPokemonsbytype.push(pokemon)}        
       }
     });
-    setPokemons(filteredPokemonsbytype);
+    setFiltereds(filteredPokemonsbytype);
   };
   
   const antselecionado = (id) => {
@@ -99,13 +101,17 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
+      <Head>
+        <link rel="shortcut icon" href="/static/pokeball.svg" />
+        <title>Pokedex</title>
+      </Head>
       {selecionado.length != 0 && <div className={styles.selecionado} onClick={(e) => (console.log(selecionado))}>
         <button onClick={(e) =>  {tirarselecionado()}} className={styles.x} ><h1> </h1></button>
         {selecionado.id > 1 ?
         <button onClick={(e) =>  {posselecionado(selecionado.id)}} className={styles.selecionado_button}><h1>&#60;</h1></button>:<h1></h1>} 
         <div className={styles.selecionado_card}>
           <div className={styles.selecionado_imagem}>
-               <img src={selecionado.sprites.front_default} alt={selecionado.name} />
+               <Image src={selecionado.sprites.front_default} alt={selecionado.name} />
           </div>
           <div className={styles.selecionado_descricao}>
                <h1>{selecionado.name}</h1>
@@ -142,15 +148,25 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-      {pokemons.length == 0 ? (<h1>Nenhum Pokemon encontrado</h1>)
+      {filtereds.length == 0 ? 
+      
+      (pokemons.length == 0 ? (<h1>Nenhum Pokemon encontrado</h1>)
       :
-      (
-        pokemons.map((pokemon) => (
+      (pokemons.map((pokemon) => (
           <button onClick={(e) => setSelecionado(pokemon.data) } className={styles.button} key={pokemon.data.id}>
           <Card img={pokemon.data.sprites.front_default} nome={pokemon.data.name} tipos={pokemon.data.types} numero={pokemon.data.id} />
           </button>
         )
-        ))}
+        )))
+
+      : 
+      (filtereds.map((pokemon) => (
+          <button onClick={(e) => setSelecionado(pokemon.data) } className={styles.button} key={pokemon.data.id}>
+          <Card img={pokemon.data.sprites.front_default} nome={pokemon.data.name} tipos={pokemon.data.types} numero={pokemon.data.id} />
+          </button>)))}
+
+          
+      
       </main>
     </div>
   );
