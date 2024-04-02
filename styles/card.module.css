@@ -1,0 +1,24 @@
+.card{
+     width: 300px;
+     height: 450px;
+     background-color: #dc0a2d;
+     border-radius: 10px;
+     border: 2px solid #3f0002;
+     padding: 20px;
+     text-align: center;
+}
+.imagem{
+     height: 50%;
+     aspect-ratio: 10 / 10;
+     background-color: #232323;
+     border-radius: 3px;
+     border: 20px solid #dedede;
+     margin: auto;
+     margin-bottom: 30px;
+}
+.imagem img{
+     width: 80%;
+}
+.types button{
+     margin-inline: 5px;
+}
