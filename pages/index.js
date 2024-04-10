@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from '../components/card'
 import Head from 'next/head'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +13,7 @@ export default function Home() {
   const [pokemons, setPokemons] = useState([]);
   const [filtereds, setFiltereds] = useState([]);
   const [tipos, setTipos] = useState([]);
+  const [nome, setNome] = useState([]);
   let [selecionado, setSelecionado] = useState([]);
 
   
@@ -39,11 +41,13 @@ export default function Home() {
         filteredPokemons.push(pokemons[i]);
       }
     }
-  
+    
+    console.log(nome == null)
+    setNome(name);
     setFiltereds(filteredPokemons);
   };
   
-  function arrayCompare(first, last)
+function arrayCompare(first, last)
   {
     var result = (0);
     first.map((f) => {
@@ -147,9 +151,9 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-      {filtereds.length == 0 ? 
+      {filtereds.length == 0? 
       
-      (pokemons.length == 0 ? (<h1>Nenhum Pokemon encontrado</h1>)
+      (tipos.length != 0 || nome != null ? (<h1>Nenhum Pokemon encontrado</h1>)
       :
       (pokemons.map((pokemon) => (
           <button onClick={(e) => setSelecionado(pokemon.data) } className={styles.button} key={pokemon.data.id}>
