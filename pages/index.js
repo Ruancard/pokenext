@@ -13,8 +13,8 @@ export default function Home() {
   const [pokemons, setPokemons] = useState([]);
   const [filtereds, setFiltereds] = useState([]);
   const [tipos, setTipos] = useState([]);
-  const [nome, setNome] = useState([]);
-  let [selecionado, setSelecionado] = useState([]);
+  const [nome, setNome] = useState();
+  const [selecionado, setSelecionado] = useState([]);
 
   
 
