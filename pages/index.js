@@ -41,8 +41,6 @@ export default function Home() {
         filteredPokemons.push(pokemons[i]);
       }
     }
-    
-    console.log(nome == null)
     setNome(name);
     setFiltereds(filteredPokemons);
   };
